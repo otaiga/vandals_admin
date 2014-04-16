@@ -1,53 +1,23 @@
-<div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="index.html">Varsity Vandals Admin</a>
-        </div>
-      </div>
-    </div>
-
-
+      <!-- Login Form -->
     	<div class="container">
-          <div id="form-wrapper">
-            <%= form_for(resource, as: resource_name, html: {class: 'form login-form'}, url: session_path(resource_name)) do |f| %>
-            <legend>Sign in to <span class="blue">MyApp</span></legend>
-            
-            <div class="body">      
-              <%= f.label :email %>
-			  <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
+        <div id="form-wrapper">
+          <%= form_for(resource, as: resource_name, html: {class: 'form login-form'}, url: session_path(resource_name)) do |f| %>
+            <legend><span class="blue">Vandals</span></legend>
+              <div class="body">      
+                <%= f.label :email %>
+			          <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Email' %>
 			    		
-              <%= f.label :password %>
-			  <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
-			</div>
+                <%= f.label :password %>
+			          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+			        </div>
              
-            <div class="footer">
-			    					    		
-			  <% if devise_mapping.rememberable? -%>
-                <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-              <% end -%>
-			</div>
+              <div class="footer">
+			    		  <% if devise_mapping.rememberable? -%>
+                  <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+                <% end -%>
+			        </div>
 			
-			<%= f.submit "Sign in", class: 'btn btn-lg btn-success btn-block' %>
-		<% end %>
-			    </div>
-			
-               
-            
-       
-           
+			        <%= f.submit "Sign in", class: 'btn btn-lg btn-success btn-block' %>
+           <% end %>  
+           </div>
         </div>
-
-    </div>
-
-
-
-
-<footer class="white navbar-fixed-bottom">
-      Don't have an account yet? <a href="register.html" class="btn btn-black">Register</a>
-    </footer>
-

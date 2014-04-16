@@ -6,7 +6,7 @@ class TournamentsController < ApplicationController
 
   def create
     @tournament = Tournament.new(tourn_params)
-    if @gallery.save
+    if @tournament.save
       redirect_to root_path, notice: 'Tournament Successfully Created'
     else
       render action: 'new'
@@ -44,6 +44,6 @@ class TournamentsController < ApplicationController
   private
 
   def tourn_params
-    params.require(:tournament).permit(:id, :name, :tour_date, :tourn_location)
+    params.require(:tournament).permit(:id, :name, :tourn_date, :tourn_location)
   end
 end
