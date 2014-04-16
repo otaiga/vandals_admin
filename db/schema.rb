@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415123532) do
+ActiveRecord::Schema.define(version: 20140416103454) do
+
+  create_table "fixtures", force: true do |t|
+    t.string   "home_team"
+    t.string   "away_team"
+    t.time     "kickoff_time"
+    t.integer  "tournament_id"
+    t.integer  "home_score_result"
+    t.integer  "away_score_result"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tournaments", force: true do |t|
     t.string   "name"

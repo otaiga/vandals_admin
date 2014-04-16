@@ -86,6 +86,25 @@ html {
   font-weight: 300;
 }
 
+/* Admin Dashboard */
+
+.panel-heading > .glyphicon.glyphicon-plus {
+  position: absolute;
+  right: 74px;
+  top: 128px;
+  cursor: pointer;
+}
+
+.panel-heading > .glyphicon.glyphicon-minus {
+  position: absolute;
+  right: 74px;
+  top: 128px;
+  cursor: pointer;
+}
+
+.panel-body > table.table {
+  display:none;
+}
 
 /* MEDIA QUERIES */
 
