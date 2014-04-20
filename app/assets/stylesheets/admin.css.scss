@@ -88,23 +88,36 @@ html {
 
 /* Admin Dashboard */
 
-.panel-heading > .glyphicon.glyphicon-plus {
-  position: absolute;
-  right: 74px;
-  top: 128px;
-  cursor: pointer;
+/* Admin Dashboard */
+
+.tournament-header {
+  position:relative;
 }
 
-.panel-heading > .glyphicon.glyphicon-minus {
-  position: absolute;
-  right: 74px;
-  top: 128px;
-  cursor: pointer;
-}
+/* + is equivalent to Jquerys next */
 
-.panel-body > table.table {
+.tournament-header + .table.section-body {
   display:none;
 }
+
+.tournament-header.section-show + table.section-body {
+  display:block;
+}
+
+.tournament-header .toggle {
+  background: url('/assets/toggle-open.png');
+  width:38px;
+  height:38px;
+  position:absolute;
+  top:-6px;
+  right:186px;
+  cursor:pointer;
+}
+
+.tournament-header.section-show .toggle {
+  background: url('/assets/toggle-close.png');
+}
+
 
 /* MEDIA QUERIES */
 

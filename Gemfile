@@ -8,7 +8,7 @@ gem 'mysql2'
 #User Authentication
 gem 'devise'
 #Paperclip and S3
-gem "paperclip", "~> 3.0"
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk'
 gem 'nested_form'
 # Use SCSS for stylesheets

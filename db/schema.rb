@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416103454) do
+ActiveRecord::Schema.define(version: 20140420094120) do
 
   create_table "fixtures", force: true do |t|
     t.string   "home_team"
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 20140416103454) do
     t.integer  "away_score_result"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "galleries", force: true do |t|
+    t.integer  "tournament_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gallery_images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "tournaments", force: true do |t|
