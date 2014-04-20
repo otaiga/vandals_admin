@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 well">
-    	<%= form_for @gallery, html: { multipart: true }  do |f| %>
+    	<%= nested_form_for @gallery, html: { multipart: true }  do |f| %>
         <fieldset>
         <!-- Form Name -->
         <legend>Create New Gallery</legend>
@@ -11,7 +11,17 @@
           <%= f.collection_select :tournament_id, Tournament.all, :id, :name, { :prompt => "Please Select a Tournament" }, { class: 'form-control' } %>
         </div>
 
-            
+        <%= f.fields_for :gallery_images do |build| %>
+
+        <div class="form-group">
+
+          <%= build.label :photo %>
+          <%= build.file_field :photo %>
+        </div>
+        <%= build.link_to_remove "Remove this Photo" %>
+        <% end %>
+
+        <%= f.link_to_add "Add a Photo", :gallery_images %>
         <div class="form-group">
 			    <%= f.submit 'Submit', :class => 'btn btn-success' %>
 			  </div>

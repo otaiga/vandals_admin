@@ -7,6 +7,7 @@ class GalleriesController < ApplicationController
 
   def new
     @gallery = Gallery.new
+    @gallery.gallery_images.build
   end
 
   def create
@@ -46,6 +47,6 @@ class GalleriesController < ApplicationController
   private
 
   def gallery_params
-    params.require(:fixture).permit(:id, :tournament_id)
+    params.require(:gallery).permit(:id, :tournament_id, gallery_images_attributes: [:id, :gallery_id, :photo, :_destroy])
   end
 end
