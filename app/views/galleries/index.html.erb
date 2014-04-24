@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 well">
+      <!--vertical Tabs-->
+                <div id="verticalTab">
+                    <ul class="resp-tabs-list">
+                      <% @tournaments.each do |t| %>
+                        <li><%= t.name %></li>
+                      <% end %>
+                    </ul>
+                    <div class="resp-tabs-container">
+                     <% @tournaments.each do |t| %>
+                        <div>
+                            <div class="clear"></div>
+                              <ul class="team-gallery">
+                                <% t.gallery_images.each do |g| %>
+                                  <li>
+                                    <%= link_to image_tag(g.photo.url(:gallery_small)), g.photo.url(:gallery_large), class: 'clb-photo' %> 
+                                  </li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                  </div><!--resp-tabs-container-->
+                </div><!--/vertical-tab-->
+
+
+
+    </div><!--/col-md-12-->
+  </div>
+</div>
+
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#verticalTab').easyResponsiveTabs({
+                    type: 'vertical',
+                    width: 'auto',
+                    fit: true
+                });
+            });
+        </script>
+    

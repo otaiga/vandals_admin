@@ -5,8 +5,8 @@ class GalleryImage < ActiveRecord::Base
   has_attached_file :photo,
                 styles: {
                   gallery_thumb: '100x100#',
-                  gallery_large: '760x380#',
-                  gallery_small: '360x280#'
+                  gallery_large: '400x400#',
+                  gallery_small: '215x215#'
                 },
                 storage: :s3,
                 url: ':s3_domain_url',

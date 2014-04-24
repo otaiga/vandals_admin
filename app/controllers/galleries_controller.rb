@@ -3,6 +3,8 @@ class GalleriesController < ApplicationController
 
   def index
     @galleries = Gallery.all
+    @tournaments = Tournament.all
+    @tour_gal_img = @galleries.group_by(&:tournament)
   end
 
   def new
