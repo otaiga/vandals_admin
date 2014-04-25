@@ -5,7 +5,7 @@
                 <div id="verticalTab">
                     <ul class="resp-tabs-list">
                       <% @tournaments.each do |t| %>
-                        <li><%= t.name %></li>
+                        <li><%= t.name %> <%= link_to 'Edit Gallery', edit_gallery_path(t) %></li>
                       <% end %>
                     </ul>
                     <div class="resp-tabs-container">
@@ -15,7 +15,7 @@
                               <ul class="team-gallery">
                                 <% t.gallery_images.each do |g| %>
                                   <li>
-                                    <%= link_to image_tag(g.photo.url(:gallery_small)), g.photo.url(:gallery_large), class: 'clb-photo' %> 
+                                    <%= link_to image_tag(g.photo.url(:gallery_large)), g.photo.url(:gallery_large), class: 'clb-photo' %> 
                                   </li>
                                 <% end %>
                             </ul>

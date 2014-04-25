@@ -1,2 +1,35 @@
-<h1>Tournaments#edit</h1>
-<p>Find me in app/views/tournaments/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 well">
+    	<%= form_for @tournament do |f| %>
+        <fieldset>
+        <!-- Form Name -->
+        <legend>Edit Tournament</legend>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <%= f.label :name %>
+			  <%= f.text_field :name, class: 'form-control', placeholder: 'Tournament Name' %> 
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <%= f.label :tourn_date %><br>
+			  <%= f.date_select :tourn_date, :order => [:day, :month, :year] %>   
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <%= f.label :tourn_location %>
+			  <%= f.text_field :tourn_location, class: 'form-control', placeholder: 'Tournament Location' %> 
+			</div>
+
+            <div class="form-group">
+			  <%= f.submit 'Submit', :class => 'btn btn-success' %>
+			</div>
+
+          </fieldset>
+        <% end %>
+      </div>
+     </div>
+    </div>
