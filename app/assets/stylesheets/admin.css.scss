@@ -13,6 +13,55 @@ html {
   color: #447fc8;
 }
 
+/* ALERTS */
+
+div.alert {
+    padding: 20px 15px 10px 35px;
+    padding-left: 35px;
+    margin-bottom: 10px;
+}
+
+.alert-success {
+    border: 1px solid #72ad55;
+    background-color: #ceefbe;
+}
+
+#flash_notice {
+        text-align:center;
+}
+
+.help-inline {
+        color:red;
+        padding-top:5px;
+        font-size:0.8em;
+}
+
+.error {
+        padding-bottom:0px;
+}
+
+
+.alert {
+  padding: 0.8em;
+  margin: 0 0 1.5em 0;
+  line-height: 1.6em;
+  border-radius: 4px!important;
+  -webkit-border-radius: 4px!important;
+  -moz-border-radius: 4px!important;
+  -o-border-radius: 4px!important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6); 
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6); 
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6); 
+  -o-box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.alert.red {
+  background: #f65e13;
+  border: 1px solid #f65e13;
+  color: #fff;
+}
+
+
 /* LOGIN  */
 
 #form-wrapper {
