@@ -1,7 +1,7 @@
 $(document).ready(function () {
 // Show/Hide Tournaments and Fixtures
    $(".tournament-header").click(function () {
-	      $(this).closest(".table").toggleClass("section-show");
+	      $(this).closest(".tournament-header").toggleClass("section-show");
 	    });
 
 // Flash Notice Fadeout
