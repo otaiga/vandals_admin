@@ -20,13 +20,20 @@ end
 def formatted_data(results)
   # Return only if there are results
 	return unless results
+
   results['data'].map { |m| 
-    {
-      message: m['message'],
-      picture: m['picture'],
-      link: m['link']
-    } }.compact #removes nil objects from array
+  attrs = { message: m['message'], 
+            picture: m['picture'], 
+            link: m['link'], 
+            object_id: m['object_id']
+          }
+
+  Post.where(attrs).first_or_create! do |post|
+    post.attributes = attrs
+  end
+  }
 end
+
 
 
 
