@@ -7,7 +7,7 @@ class FacebookFeed
   VANDALS_ID = ENV['VANDALS_FB_ID']
   FB_ACCESS_TOKEN = ENV['FACEBOOK_ACCESS_TOKEN']
   FACEBOOK_URL = "https://graph.facebook.com/#{VANDALS_ID}/posts/?access_token=#{FB_ACCESS_TOKEN}"
-
+  
 def get_feed
   uri = URI(FACEBOOK_URL)
   response = HTTParty.get(uri)
@@ -28,10 +28,23 @@ def formatted_data(results)
             object_id: m['object_id']
           }
 
+
   Post.where(attrs).first_or_create! do |post|
     post.attributes = attrs
   end
   }
+
+  #puts get_large_photo(object_id)
+end
+
+def get_large_photo(object_id)
+  id = object_id
+  photo_url = "https://graph.facebook.com/#{id}/picture/?access_token=#{FB_ACCESS_TOKEN}"
+  uri = URI(photo_url)
+  response = HTTParty.get(uri)
+  results = JSON.parse(response.body)
+  puts results
+
 end
 
 
