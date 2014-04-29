@@ -87,6 +87,9 @@ GEM
       tilt
     highline (1.6.21)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (2.0.6)
       activesupport (>= 3.0.0, < 5)
@@ -103,6 +106,7 @@ GEM
     mini_portile (0.5.3)
     minitest (5.3.3)
     multi_json (1.9.2)
+    multi_xml (0.5.5)
     mysql2 (0.3.15)
     nested_form (0.3.2)
     nokogiri (1.6.1)
@@ -216,6 +220,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails (= 4.2.1)
+  httparty
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
