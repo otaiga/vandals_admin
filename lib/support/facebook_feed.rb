@@ -6,14 +6,25 @@ class FacebookFeed
   #Constants
   VANDALS_ID = ENV['VANDALS_FB_ID']
   FB_ACCESS_TOKEN = ENV['FACEBOOK_ACCESS_TOKEN']
-  FACEBOOK_URL = "https://graph.facebook.com/#{VANDALS_ID}/posts/?access_token=#{FB_ACCESS_TOKEN}"
+  CLIENT_ID = ENV['APP_ID']
+  CLIENT_SECRET = ENV['APP_SECRET']
   
 def get_feed
-  uri = URI(FACEBOOK_URL)
+  fb_access_token = access_token
+  uri = URI(URI.escape "https://graph.facebook.com/#{VANDALS_ID}/posts/?#{fb_access_token}")
   response = HTTParty.get(uri)
   results = JSON.parse(response.body)
   return formatted_data(results)  
 end
+
+def access_token
+  token_uri = URI("https://graph.facebook.com/oauth/access_token?client_id=#{CLIENT_ID}&client_secret=#{CLIENT_SECRET}&grant_type=client_credentials")
+  token_response = HTTParty.get(token_uri)
+  Rails.logger.info(token_response)
+  return token_response
+
+end
+
 
 def formatted_data(results)
     if results['data']
