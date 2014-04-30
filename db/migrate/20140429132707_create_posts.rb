@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :picture
       t.text :link
       t.text :object_id
+      t.text :large_image_url
 
       t.timestamps
     end

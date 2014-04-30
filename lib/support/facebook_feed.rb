@@ -12,44 +12,44 @@ def get_feed
   uri = URI(FACEBOOK_URL)
   response = HTTParty.get(uri)
   results = JSON.parse(response.body)
-  #puts results
-  puts formatted_data(results)
-  
+  return formatted_data(results)  
 end
 
 def formatted_data(results)
-  # Return only if there are results
-	return unless results
+    if results['data']
+        for record in results['data'] do
+             attrs = {
+                 message: record['message'],
+                 picture: record['picture'],
+                 link: record['link'],
+                 object_id: record['object_id']
+             }
 
-  results['data'].map { |m| 
-  attrs = { message: m['message'], 
-            picture: m['picture'], 
-            link: m['link'], 
-            object_id: m['object_id']
-          }
+             Post.where(attrs).first_or_create! do |post|
+              post.attributes = attrs
+             end
 
+             #perform second call
+             if record['object_id']
+                post = Post.find_by object_id: record['object_id']
+                if post
+                    fb_large_picture_url = get_large_photo(record['object_id'])
+                    post.update_column(:large_image_url, fb_large_picture_url)
+                end
+             end
+        end
+    end
+ end
 
-  Post.where(attrs).first_or_create! do |post|
-    post.attributes = attrs
-  end
-  }
+ def get_large_photo(object_id)
+     second_uri = URI("https://graph.facebook.com/#{object_id}/?picture")
+     second_response = HTTParty.get(second_uri)
+     second_results = JSON.parse(second_response)
+     return formatted_picture_data(second_results)
+ end
 
-  #puts get_large_photo(object_id)
-end
-
-def get_large_photo(object_id)
-  id = object_id
-  photo_url = "https://graph.facebook.com/#{id}/picture/?access_token=#{FB_ACCESS_TOKEN}"
-  uri = URI(photo_url)
-  response = HTTParty.get(uri)
-  results = JSON.parse(response.body)
-  puts results
-
-end
-
-
-
-
-
+ def formatted_picture_data(second_results)
+  return second_results['source']
+ end
 
 end
