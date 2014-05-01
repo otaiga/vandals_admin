@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20140429132707) do
     t.text     "link"
     t.text     "object_id"
     t.text     "large_image_url"
+    t.text     "description"
+    t.datetime "created_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

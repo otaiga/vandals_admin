@@ -14,15 +14,12 @@ def get_feed
   uri = URI(URI.escape "https://graph.facebook.com/#{VANDALS_ID}/posts/?#{fb_access_token}")
   response = HTTParty.get(uri)
   results = JSON.parse(response.body)
-  return formatted_data(results)  
+  formatted_data(results)  
 end
 
 def access_token
   token_uri = URI("https://graph.facebook.com/oauth/access_token?client_id=#{CLIENT_ID}&client_secret=#{CLIENT_SECRET}&grant_type=client_credentials")
   token_response = HTTParty.get(token_uri)
-  Rails.logger.info(token_response)
-  return token_response
-
 end
 
 
@@ -33,7 +30,9 @@ def formatted_data(results)
                  message: record['message'],
                  picture: record['picture'],
                  link: record['link'],
-                 object_id: record['object_id']
+                 object_id: record['object_id'],
+                 description: record['description'],
+                 created_time: record['created_time']
              }
 
              Post.where(attrs).first_or_create! do |post|
@@ -49,6 +48,13 @@ def formatted_data(results)
                 end
              end
         end
+        
+        #Delete Posts that have no message (unavailable pages on facebook)
+        delete_if_nil = Post.where(message: nil) 
+        delete_if_nil.destroy_all
+          
+
+       
     end
  end
 
@@ -56,11 +62,11 @@ def formatted_data(results)
      second_uri = URI("https://graph.facebook.com/#{object_id}/?picture")
      second_response = HTTParty.get(second_uri)
      second_results = JSON.parse(second_response)
-     return formatted_picture_data(second_results)
+     formatted_picture_data(second_results)
  end
 
  def formatted_picture_data(second_results)
-  return second_results['source']
+  second_results['source']
  end
 
 end
