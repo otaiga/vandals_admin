@@ -53,8 +53,6 @@ def formatted_data(results)
         delete_if_nil = Post.where(message: nil) 
         delete_if_nil.destroy_all
           
-
-       
     end
  end
 
