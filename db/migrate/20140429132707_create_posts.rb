@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :object_id
       t.text :large_image_url
       t.text :description
+      t.text :video_url
       t.datetime :created_time
 
       t.timestamps

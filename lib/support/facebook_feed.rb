@@ -30,6 +30,7 @@ def formatted_data(results)
                  message: record['message'],
                  picture: record['picture'],
                  link: record['link'],
+                 video_url: record['source'],
                  object_id: record['object_id'],
                  description: record['description'],
                  created_time: record['created_time']
